@@ -25,13 +25,12 @@ sudo apt install nodejs npm
 ### Installation
 ```
 # Clone the repository
-git clone https://github.com/JiahuaZhao/SeismicProcAgent.git
-cd SeismicProcAgent
+git clone https://github.com/JiahuaZhao/SeismicProcAgent-linux.git
+mv SeismicProcAgent-linux SeismicProcAgent && cd SeismicProcAgent
 
 # Install dependencies
 uv sync
 ```
-Then download and install [`Claude for Desktop`](https://claude.ai/download) according to your operating system, we will configure it next.
 
 ### Configuration
 Please refer to the configuration process shown in the MCP document: https://modelcontextprotocol.io/quickstart/user, and add the following content when configuring `claude_desktop_config.json`:
