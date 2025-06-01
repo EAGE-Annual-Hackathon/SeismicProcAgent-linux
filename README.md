@@ -4,18 +4,23 @@ The open source basic demo for seismic data process AI agent using MCP and LLMs.
 ## Quick Start
 ### Environment Requirements
 * `Python`: 3.10+
-* `node`: v22.16.0+
-* `npm/npx`: 10.9.2+
+* `node`: v18.19.1+
+* `npm/npx`: 9.2.0+
 
 SeismicProcAgent is developed in Python. To ensure a smooth setup process, we recommend using [`uv`](https://docs.astral.sh/uv/getting-started/installation/) to manage the Python environment and dependencies. In the terminal we execute:
 ```
-# MacOS/Linux
-curl -LsSf https://astral.sh/uv/install.sh | sh
+url -LsSf https://astral.sh/uv/install.sh | sh
 
-# Windows
-powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
+or
+
+wget -qO uv.tar.gz https://github.com/astral-sh/uv/releases/latest/download/uv-x86_64-unknown-linux-gnu.tar.gz
+sudo tar xf uv.tar.gz --strip-components=1 -C /usr/local/bin uv-x86_64-unknown-linux-gnu/uv
 ```
-Then download and install [`Node.js`](https://nodejs.org/en/download/) according to your operating system. Be sure to restart your terminal afterwards to ensure the `uv/npm/npx` command is recognized.
+Then download and install [`Node.js`](https://nodejs.org/en/download/):
+```
+sudo apt update
+sudo apt install nodejs npm
+```
 
 ### Installation
 ```
