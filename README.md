@@ -79,7 +79,58 @@ MODEL_NAME=gpt-4.1-nano
         * Convert a SEGY file to MDIO format.
     * mdio2segy:
         * Convert MDIO file to SEGY file.
-
+* #### Visualization:
+    * mdio_plot_inline:
+        * Read MDIO file and plot the inline.
+    * mdio_plot_crossline:
+        * Read MDIO file and plot the crossline.
+    * mdio_plot_time: 
+        * Read MDIO file and plot the crossline.
+    * frequency_spectrum_2d:
+        * Calculate the frequency spectrum of a 2D seismic data.
+    * frequency_spectrum_3d:
+        * Calculate the frequency spectrum of a 3D seismic data.
+* #### Seismic attributes:
+    * sliceAttribute:
+        * Computing attribute of a 3D seismic cube, output a 2D attribute slice.
+        * Attribute classes: Amplitude, CompleTrace, DipAzm (dip and azimuth), EdgeDetection (edge detection).
+            * Each class has different attribute types, as follows:
+                * For class 'Amplitude', attributes are:
+                    * 'fder': first derivative
+                    * 'sder': second derivative
+                    * 'rms': rms of trace value (e.g. amplitude)
+                    * 'gradmag': gradient magnitude using Gaussian operator
+                    * 'reflin': reflection intensity
+                * For class 'CompleTrace', attributes are: 
+                    * 'enve': envelope
+                    * 'inphase': instantaneous phase 
+                    * 'cosphase': cosine instantaneous phase 
+                    * 'ampcontrast': relative amplitude contrast
+                    * 'ampacc': amplitude acceleration
+                    * 'infreq': instantaneous frequency 
+                    * 'inband': instantaneous bandwidth
+                    * 'domfreq': dominant frequency 
+                    * 'freqcontrast': frequency change 
+                    * 'sweet': sweetness 
+                    * 'quality': quality factor 
+                    * 'resphase': response phase 
+                    * 'resfreq': response frequency 
+                    * 'resamp': response amplitude 
+                    * 'apolar': apparent polarity
+                * For class 'DipAzm', attributes are: 
+                    * 'dipgrad': gradient dips from inline, crossline, and z-gradients 
+                    * 'gst': the gradient structure tensors (GST), inner product of 
+                        gradients.
+                    * 'gstdip2d': 2D gradient dips from GST
+                    * 'gstdip3d': 3D gradient dips from GST
+                    * 'gstazm3d': 3D azimuth from GST
+                * For class 'EdgeDetection', attributes are:
+                    * 'semblance': semblance
+                    * 'gstdisc': discontinuity from eigenvalues of GST
+                    * 'eigen': multi-trace semblance from 3D seismic incorporating the 
+                                analytic trace
+                    * 'chaos': multi-trace chaos from 3D seismic
+                    * 'curv': volume curvature from 3D seismic dips
 
 ### Let’s have fun
 First we need to run the Python scripts:
