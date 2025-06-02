@@ -25,7 +25,7 @@ sudo apt install nodejs npm
 ### Installation
 ```
 # Clone the repository
-git clone https://github.com/JiahuaZhao/SeismicProcAgent-linux.git
+git clone https://github.com/EAGE-Annual-Hackathon/SeismicProcAgent-linux.git
 mv SeismicProcAgent-linux SeismicProcAgent && cd SeismicProcAgent
 
 # Install dependencies
