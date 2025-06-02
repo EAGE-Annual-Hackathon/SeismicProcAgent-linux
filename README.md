@@ -62,7 +62,7 @@ BASE_URL=https://integrate.api.nvidia.com/v1/chat/completions
 NVIDIA_API_KEY=Your API key
 MODEL_NAME=qwen/qwen3-235b-a22b
 ```
-Model resources are supported by NVIDIA: https://build.nvidia.com/models. Or:
+Model resources are supported by NVIDIA: https://build.nvidia.com/models, or:
 
 ```
 BASE_URL=https://api.openai.com/v1
