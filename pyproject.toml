@@ -1,0 +1,23 @@
+[project]
+name = "seismicprocagent-linux"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "asyncio>=3.4.3",
+    "dotenv>=0.9.9",
+    "fastmcp>=2.5.2",
+    "h5py>=3.13.0",
+    "langchain-nvidia-ai-endpoints>=0.3.10",
+    "langchain-ollama>=0.3.3",
+    "langchain[openai]>=0.3.25",
+    "matplotlib>=3.10.3",
+    "mcp-use>=1.3.0",
+    "mcp[cli]>=1.9.2",
+    "multidimio>=0.5.3",
+    "numpy>=2.2.6",
+    "pandas>=2.2.3",
+    "scipy>=1.15.3",
+    "segyio>=1.9.13",
+]

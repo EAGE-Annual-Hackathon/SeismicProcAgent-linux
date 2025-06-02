@@ -60,10 +60,17 @@ If the server does not have any GPUs, or you do not want to run local LLMs, we c
 ```
 BASE_URL=https://integrate.api.nvidia.com/v1/chat/completions
 NVIDIA_API_KEY=Your API key
-MODEL_NAME=mistralai/mistral-small-3.1-24b-instruct-2503
+MODEL_NAME=qwen/qwen3-235b-a22b
 ```
 Model resources are supported by NVIDIA: https://build.nvidia.com/models.
 
+Or
+
+```
+BASE_URL=https://api.openai.com/v1
+OPENAI_API_KEY=Your API key
+MODEL_NAME=gpt-4.1-nano
+```
 ### Let’s have fun
 First we need to run the Python scripts:
 ```
@@ -83,4 +90,12 @@ Then interactively operate, the following examples (Chat Prompts) demonstrate th
 * ##### Seismic Data Visualization
 ```
 "Please plot the image of inline 400 for /Your_Local_Path/Dutch_Government_F3_entire_8bit_seismic.segy."
+```
+* ##### Seismic Attributes
+```
+"Please plot the envelope image of inline 400 for /Your_Local_Path/Dutch_Government_F3_entire_8bit_seismic.segy."
+```
+* ##### Seismic Data Denoising
+```
+"Please run a SVD denoise on crossline 500 using a cut off of 0.3 for /Your_Local_Path/Dutch_Government_F3_entire_8bit_seismic.segy."
 ```
