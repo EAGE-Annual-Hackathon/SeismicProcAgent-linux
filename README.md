@@ -11,7 +11,7 @@ SeismicProcAgent is developed in Python. To ensure a smooth setup process, we re
 ```
 url -LsSf https://astral.sh/uv/install.sh | sh
 
-or
+Or
 
 wget -qO uv.tar.gz https://github.com/astral-sh/uv/releases/latest/download/uv-x86_64-unknown-linux-gnu.tar.gz
 sudo tar xf uv.tar.gz --strip-components=1 -C /usr/local/bin uv-x86_64-unknown-linux-gnu/uv
@@ -33,127 +33,51 @@ uv sync
 ```
 
 ### Configuration
-Please refer to the configuration process shown in the MCP document: https://modelcontextprotocol.io/quickstart/user, and add the following content when configuring `claude_desktop_config.json`:
+#### Local execution (Ollama)
+First, make sure that Ollama is installed on your local linux server:
 ```
-# MacOS/Linux
-{
-  "mcpServers": {
-      "sequential-thinking": {
-          "command": "npx",
-          "args": [
-              "-y",
-              "@modelcontextprotocol/server-sequential-thinking"
-          ]
-      },
-      "filesystem": {
-          "command": "npx",
-          "args": [
-              "-y",
-              "@modelcontextprotocol/server-filesystem",
-              "/Your_Local_Path/SeismicProcAgent"
-          ]
-      },
-      "seismic_basic_tools": {
-          "command": "uv",
-          "args": [
-              "--directory",
-              "/Your_Local_Path/SeismicProcAgent",
-              "run",
-              "basic_tools.py"
-          ]
-      },
-      "seismic_attributes": {
-          "command": "uv",
-          "args": [
-              "--directory",
-              "/Your_Local_Path/SeismicProcAgent",
-              "run",
-              "seismic_attributes.py"
-          ]
-      },
-      "seismic_denoising": {
-          "command": "uv",
-          "args": [
-              "--directory",
-              "/Your_Local_Path/SeismicProcAgent",
-              "run",
-              "denoising.py"
-          ]
-      },
-      "seismic_ai_tools": {
-          "command": "uv",
-          "args": [
-              "--directory",
-              "/Your_Local_Path/SeismicProcAgent",  
-              "run",
-              "ai_tools.py"
-          ]
-      }
-  }
-}
+ollama -v 
 ```
+If there is no Ollama:
 ```
-# Windows
-{
-  "mcpServers": {
-      "sequential-thinking": {
-          "command": "npx",
-          "args": [
-              "-y",
-              "@modelcontextprotocol/server-sequential-thinking"
-          ]
-      },
-      "filesystem": {
-          "command": "npx",
-          "args": [
-              "-y",
-              "@modelcontextprotocol/server-filesystem",
-              "C:\\Users\\Your_Local_Path\\SeismicProcAgent"
-          ]
-      },
-      "seismic_basic_tools": {
-          "command": "uv",
-          "args": [
-              "--directory",
-              "C:\\Users\\Your_Local_Path\\SeismicProcAgent",
-              "run",
-              "basic_tools.py"
-          ]
-      },
-      "seismic_attributes": {
-          "command": "uv",
-          "args": [
-              "--directory",
-              "C:\\Users\\Your_Local_Path\\SeismicProcAgent",
-              "run",
-              "seismic_attributes.py"
-          ]
-      },
-      "seismic_denoising": {
-          "command": "uv",
-          "args": [
-              "--directory",
-              "C:\\Users\\Your_Local_Path\\SeismicProcAgent",
-              "run",
-              "denoising.py"
-          ]
-      },
-      "seismic_ai_tools": {
-          "command": "uv",
-          "args": [
-              "--directory",
-              "C:\\Users\\Your_Local_Path\\SeismicProcAgent",  
-              "run",
-              "ai_tools.py"
-          ]
-      }
-  }
-}
+curl -fsSL https://ollama.com/install.sh | sh
 ```
-After updating your configuration file, you need to restart Claude for Desktop. Upon restarting, you should see a slider icon in the bottom left corner of the input box. After clicking on the slider icon, you should see the tools. At the same time, you can click on the tools to choose whether to use the tools (it is recommended to turn off `sequentialthinking` for the first time).
+
+If your linux server has a GPU, you can visit: https://ollama.com/search ​​to obtain Ollama models, and then you can run the large language model locally (multimodal models are recommended):
+```
+# GPU memory is more than 16 GB
+ollama pull gemma3:12b
+
+Or
+
+# GPU memory is more than 8 GB
+ollama pull qwen2.5vl:7b
+```
+Then you can modify the `.env` and change the `OLLAMA_MODEL_NAME` to the model name you actually download:
+```
+# For example
+OLLAMA_MODEL_NAME=gemma3:12b
+```
+#### Calling the APIs
+If the server does not have any GPUs, or you do not want to run local LLMs, we can also call the APIs to use the LLMs. Take the OpenAI API format () as an example, you also need to modify the configuration in `.env`:
+```
+BASE_URL='https://integrate.api.nvidia.com/v1/chat/completions'
+API_KEY='Your API key'
+MODEL_NAME='mistralai/mistral-small-3.1-24b-instruct-2503'
+```
+Model resources are supported by NVIDIA: https://build.nvidia.com/models.
 
 ### Let’s have fun
-The following examples (Chat Prompts) demonstrate the capabilities of SeismicProcAgent:
+First we need to run the Python scripts:
+```
+source .venv/bin/activate
+# Ollama
+python main_ollama.py
+
+# APIs
+python main_openai.py
+```
+Then interactively operate, the following examples (Chat Prompts) demonstrate the capabilities of SeismicProcAgent-linux:
 ### Primary
 * ##### Seismic Data Overview
 ```
@@ -162,23 +86,4 @@ The following examples (Chat Prompts) demonstrate the capabilities of SeismicPro
 * ##### Seismic Data Visualization
 ```
 "Please plot the image of inline 400 for /Your_Local_Path/Dutch_Government_F3_entire_8bit_seismic.segy."
-```
-* ##### Seismic Attributes
-```
-"Please plot the envelope image of inline 400 for /Your_Local_Path/Dutch_Government_F3_entire_8bit_seismic.segy."
-```
-* ##### Seismic Data Denoising
-```
-"Please run a SVD denoise on crossline 500 using a cut off of 0.3 for /Your_Local_Path/Dutch_Government_F3_entire_8bit_seismic.segy."
-```
-* ##### Seismic Data Denoising (AI)
-```
-"Please use the AI ​​method to process the data with inline = 400 for /Your_Local_Path/Dutch_Government_F3_entire_8bit_seismic.segy and show the results."
-```
-### Advance
-* ##### DeepProcess (sequential-thinking)
-> [!NOTE]
-> This function still under testing, need to enable the `sequential-thinking` tool, and consume more tokens. 
-```
-"Please help me process and analyze the seismic data: /Your_Local_Path/Dutch_Government_F3_entire_8bit_seismic.segy and show the results, from a 2D and 3D perspective, interpret the results generated by the processing, and finally organize the results into a html document and save it in local."
 ```
