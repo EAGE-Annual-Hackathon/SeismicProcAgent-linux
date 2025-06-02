@@ -45,18 +45,15 @@ curl -fsSL https://ollama.com/install.sh | sh
 
 If your linux server has a GPU, you can visit: https://ollama.com/search ​​to obtain Ollama models, and then you can run the large language model locally (multimodal models are recommended):
 ```
-# GPU memory is more than 16 GB
-ollama pull gemma3:12b
-
-Or
-
 # GPU memory is more than 8 GB
-ollama pull qwen2.5vl:7b
+ollama pull qwen3:8b
 ```
 Then you can modify the `.env` and change the `OLLAMA_MODEL_NAME` to the model name you actually download:
 ```
 # For example
-OLLAMA_MODEL_NAME=gemma3:12b
+BASE_URL=http://localhost:11434/v1
+API_KEY=ollama
+MODEL_NAME=qwen3:8b
 ```
 #### Calling the APIs
 If the server does not have any GPUs, or you do not want to run local LLMs, we can also call the APIs to use the LLMs. Take the OpenAI API format () as an example, you also need to modify the configuration in `.env`:
