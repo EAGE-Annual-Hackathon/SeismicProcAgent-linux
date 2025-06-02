@@ -58,9 +58,9 @@ MODEL_NAME=qwen3:8b
 #### Calling the APIs
 If the server does not have any GPUs, or you do not want to run local LLMs, we can also call the APIs to use the LLMs. Take the OpenAI API format () as an example, you also need to modify the configuration in `.env`:
 ```
-BASE_URL='https://integrate.api.nvidia.com/v1/chat/completions'
-NVIDIA_API_KEY='Your API key'
-MODEL_NAME='mistralai/mistral-small-3.1-24b-instruct-2503'
+BASE_URL=https://integrate.api.nvidia.com/v1/chat/completions
+NVIDIA_API_KEY=Your API key
+MODEL_NAME=mistralai/mistral-small-3.1-24b-instruct-2503
 ```
 Model resources are supported by NVIDIA: https://build.nvidia.com/models.
 
