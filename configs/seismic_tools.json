@@ -1,0 +1,22 @@
+{
+    "mcpServers": {
+        "seismic_basic_tools": {
+          "command": "uv",
+          "args": [
+              "--directory",
+              "/home/j_zhao_cyi/hackathon/seis_agent",
+              "run",
+              "basic_tools.py"
+          ]
+      },
+      "seismic_attributes": {
+          "command": "uv",
+          "args": [
+              "--directory",
+              "/home/j_zhao_cyi/hackathon/seis_agent",
+              "run",
+              "seismic_attributes.py"
+          ]
+      }
+    }
+}
