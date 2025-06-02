@@ -71,9 +71,9 @@ MODEL_NAME=gpt-4.1-nano
 ```
 
 ### Specific Functions
-#### overview
-Overview of the seismic data (.sgy and .segy).
-#### segy2mdio
+* #### overview
+** Overview of the seismic data (.sgy and .segy).
+* #### segy2mdio
 
 ### Let’s have fun
 First we need to run the Python scripts:
