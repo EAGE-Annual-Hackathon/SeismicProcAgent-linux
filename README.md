@@ -72,7 +72,7 @@ MODEL_NAME=gpt-4.1-nano
 
 ### Specific Functions
 * #### overview
-** Overview of the seismic data (.sgy and .segy).
+    * Overview of the seismic data (.sgy and .segy).
 * #### segy2mdio
 
 ### Let’s have fun
