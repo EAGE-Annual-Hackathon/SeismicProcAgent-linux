@@ -71,9 +71,15 @@ MODEL_NAME=gpt-4.1-nano
 ```
 
 ### Specific Functions
-* #### overview
-    * Overview of the seismic data (.sgy and .segy).
-* #### segy2mdio
+* #### Overview:
+    * overview: 
+        * Overview of the seismic data (.sgy and .segy).
+* #### Data format conversion:
+    * segy2mdio:
+        * Convert a SEGY file to MDIO format.
+    * mdio2segy:
+        * Convert MDIO file to SEGY file.
+
 
 ### Let’s have fun
 First we need to run the Python scripts:
