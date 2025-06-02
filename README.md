@@ -1,5 +1,5 @@
 # SeismicProcAgent-linux
-The open source basic demo for seismic data process AI agent using MCP and LLMs. Suitable for running on Linux servers (command line interaction), or private deployment.
+The open source basic demo for seismic data process AI agent using MCP and LLMs. Suitable for running on Linux servers (command line interaction), or private deployment. Built in the Hackathon hosted at the EAGE Annual 2025 in Toulouse, France.
 
 ## Quick Start
 ### Environment Requirements
